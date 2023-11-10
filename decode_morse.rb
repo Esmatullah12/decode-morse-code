@@ -1,4 +1,4 @@
-$morseSymbol = {
+MORSE_SYMBOL = {
   '.-' => 'A',
   '-...' => 'B',
   '-.-.' => 'C',
@@ -35,30 +35,30 @@ $morseSymbol = {
   '--...' => 7,
   '---..' => 8,
   '----.' => 9
-};
+}.freeze
 
-def decodeChar(morseChar)
-  return $morseSymbol[morseChar]
+def decode_char(morse_char)
+  MORSE_SYMBOL[morse_char]
 end
 
-def decodeWord(morseWords)
-  @decodeWords = ""
-  charachters = morseWords.split(' ')
+def decode_word(morse_words)
+  @decode_word = ''
+  charachters = morse_words.split
   charachters.each do |n|
-    @decodeWords += decodeChar(n)
+    @decode_word += decode_char(n)
   end
-  return @decodeWords
+  @decode_word
 end
 
-def decodeMessage(morseMessage)
-  @decodeMessage = ""
-  messageWords = morseMessage.split('   ')
-  messageWords.each_with_index do |word, index|
-    @decodeMessage += decodeWord(word)
-    @decodeMessage += ' ' unless index == messageWords.size - 1
+def decode_message(morse_message)
+  @decode_message = ''
+  message_words = morse_message.split('   ')
+  message_words.each_with_index do |word, index|
+    @decode_message += decode_word(word)
+    @decode_message += ' ' unless index == message_words.size - 1
   end
-  print @decodeMessage
+  print @decode_message
 end
 
-decodeMessage(".-   -... --- -..-   ..-. ..- .-.. .-..   --- ..-.   .-. ..- -... .. . ...")
-#A BOX FULL OF RUBIES
+decode_message('.-   -... --- -..-   ..-. ..- .-.. .-..   --- ..-.   .-. ..- -... .. . ...')
+# A BOX FULL OF RUBIES
