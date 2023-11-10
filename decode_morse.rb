@@ -60,4 +60,5 @@ def decodeMessage(morseMessage)
   print @decodeMessage
 end
 
-decodeMessage(".- -...   --- -..- ..-. ..- .-.. .-.. --- ..-. .-. ..- -... .. . ...")
+decodeMessage(".-   -... --- -..-   ..-. ..- .-.. .-..   --- ..-.   .-. ..- -... .. . ...")
+#A BOX FULL OF RUBIES
