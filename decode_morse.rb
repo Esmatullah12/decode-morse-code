@@ -38,25 +38,26 @@ $morseSymbol = {
 };
 
 def decodeChar(morseChar)
-    return $morseSymbol[morseChar]
+  return $morseSymbol[morseChar]
 end
 
 def decodeWord(morseWords)
-    @decodeWords = ""
-    charachters = morseWords.split(' ')
-    charachters.each do |n|
-      @decodeWords += decodeChar(n)
-    end
-    return @decodeWords
+  @decodeWords = ""
+  charachters = morseWords.split(' ')
+  charachters.each do |n|
+    @decodeWords += decodeChar(n)
+  end
+  return @decodeWords
 end
 
 def decodeMessage(morseMessage)
-    @decodeMessage = ""
-    messageWords = morseMessage.split('   ')
-    messageWords.each do |n|
-      @decodeMessage += decodeWord(n)
-    end
-    print @decodeMessage
+  @decodeMessage = ""
+  messageWords = morseMessage.split('   ')
+  messageWords.each_with_index do |word, index|
+    @decodeMessage += decodeWord(word)
+    @decodeMessage += ' ' unless index == messageWords.size - 1
+  end
+  print @decodeMessage
 end
 
-decodeWord(".- -... --- -..- ..-. ..- .-.. .-.. --- ..-. .-. ..- -... .. . ...")
+decodeMessage(".- -...   --- -..- ..-. ..- .-.. .-.. --- ..-. .-. ..- -... .. . ...")
